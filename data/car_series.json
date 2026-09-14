@@ -1,0 +1,150 @@
+{
+  "小米SU7": {
+    "autohome": 6962,
+    "name": "小米SU7"
+  },
+  "小米YU7": {
+    "autohome": 7915,
+    "name": "小米YU7"
+  },
+  "特斯拉Model Y": {
+    "autohome": 5769,
+    "name": "Model Y"
+  },
+  "特斯拉Model 3": {
+    "autohome": 5346,
+    "name": "Model 3"
+  },
+  "比亚迪汉": {
+    "autohome": 5499,
+    "name": "汉"
+  },
+  "比亚迪秦PLUS": {
+    "autohome": 7981,
+    "name": "秦PLUS"
+  },
+  "比亚迪海豹": {
+    "autohome": 6394,
+    "name": "海豹"
+  },
+  "理想L9": {
+    "autohome": 6576,
+    "name": "理想L9"
+  },
+  "理想L7": {
+    "autohome": 6949,
+    "name": "理想L7"
+  },
+  "理想MEGA": {
+    "autohome": 6939,
+    "name": "理想MEGA"
+  },
+  "问界M9": {
+    "autohome": 7207,
+    "name": "问界M9"
+  },
+  "问界M7": {
+    "autohome": 6643,
+    "name": "问界M7"
+  },
+  "智界R7": {
+    "autohome": 7730,
+    "name": "智界R7"
+  },
+  "享界S9": {
+    "autohome": 7630,
+    "name": "享界S9"
+  },
+  "极氪001": {
+    "autohome": 6091,
+    "name": "极氪001"
+  },
+  "极氪007": {
+    "autohome": 7491,
+    "name": "极氪007"
+  },
+  "蔚来ES6": {
+    "autohome": 4881,
+    "name": "蔚来ES6"
+  },
+  "蔚来ET5": {
+    "autohome": 7306,
+    "name": "蔚来ET5T"
+  },
+  "小鹏G6": {
+    "autohome": 8305,
+    "name": "小鹏G6"
+  },
+  "零跑C11": {
+    "autohome": 5205,
+    "name": "零跑C11"
+  },
+  "五菱宏光MINIEV": {
+    "autohome": 7576,
+    "name": "MINI"
+  },
+  "大众朗逸": {
+    "autohome": 8761,
+    "name": "朗逸"
+  },
+  "大众迈腾": {
+    "autohome": 496,
+    "name": "迈腾"
+  },
+  "丰田凯美瑞": {
+    "autohome": 110,
+    "name": "凯美瑞"
+  },
+  "本田雅阁": {
+    "autohome": 78,
+    "name": "雅阁"
+  },
+  "日产轩逸": {
+    "autohome": 448,
+    "name": "轩逸"
+  },
+  "奔驰C级": {
+    "autohome": 588,
+    "name": "奔驰C级"
+  },
+  "奔驰E级": {
+    "autohome": 197,
+    "name": "奔驰E级"
+  },
+  "宝马3系": {
+    "autohome": 66,
+    "name": "宝马3系"
+  },
+  "宝马5系": {
+    "autohome": 65,
+    "name": "宝马5系"
+  },
+  "奥迪A4L": {
+    "autohome": 692,
+    "name": "奥迪A4L"
+  },
+  "奥迪A6L": {
+    "autohome": 18,
+    "name": "奥迪A6L"
+  },
+  "吉利星越L": {
+    "autohome": 6004,
+    "name": "星越L"
+  },
+  "长安CS75 PLUS": {
+    "autohome": 4976,
+    "name": "长安CS75"
+  },
+  "坦克300": {
+    "autohome": 7264,
+    "name": "共创坦克300"
+  },
+  "哈弗H6": {
+    "autohome": 8545,
+    "name": "哈弗H6"
+  },
+  "奇瑞瑞虎8": {
+    "autohome": 6861,
+    "name": "瑞虎8"
+  }
+}

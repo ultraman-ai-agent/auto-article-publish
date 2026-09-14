@@ -1,0 +1,14 @@
+.env
+articles/
+wechat_articles/
+__pycache__/
+*.pyc
+*.exe
+.venv/
+venv/
+cookies.json
+*.log
+prompts/
+logs/
+topics.txt
+data/cache/
