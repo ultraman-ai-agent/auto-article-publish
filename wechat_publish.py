@@ -1,7 +1,7 @@
 """微信公众号新闻发布命令行入口。
 
 用法：
-    python wechat_publish.py                       # 抓新闻→繁转简→推草稿
+    python wechat_publish.py                       # 抓新闻→翻译为简体→推草稿
     python wechat_publish.py --list                # 只看候选新闻
     python wechat_publish.py --dry-run             # 抓取翻译留档，不推送
     python wechat_publish.py --from-md a.md       # 直接发布本地 Markdown

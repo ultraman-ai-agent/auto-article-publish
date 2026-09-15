@@ -1,4 +1,4 @@
-"""新闻采集发布编排：候选选取 → 抓正文 → 下载配图 → 繁转简 → 推公众号草稿。
+"""新闻采集发布编排：候选选取 → 抓正文 → 下载配图 → 翻译为简体 → 推公众号草稿。
 
 选取规则（全部走 .env）：
 - 每次随机取 NEWS_PICK_MIN ~ NEWS_PICK_MAX 篇；
@@ -340,7 +340,7 @@ def run(
 
             if _truthy(os.getenv("TRANSLATE_ENABLED", "true"), default=True):
                 notify("翻译")
-                logger("正在繁转简 ...")
+                logger("正在翻译为简体 ...")
                 article.blocks = translator.translate_blocks(article.blocks, log=logger)
                 article.title = translator.translate_title(article.title, log=logger)
 

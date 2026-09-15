@@ -1,4 +1,4 @@
-"""繁转简：调用 MiniMax（OpenAI 兼容接口）将繁体正文转换为简体。
+"""翻译为简体：调用 MiniMax（OpenAI 兼容接口）把英文/繁体正文转成简体中文。
 
 正文按块处理，图片块用 [[IMG0]] 占位符参与翻译，以保持图文顺序；
 若模型未原样保留占位符，则回退为逐段翻译，图片块位置不变。
@@ -26,11 +26,12 @@ IMG_TOKEN_PATTERN = re.compile(r"\[\[\s*IMG\s*(\d+)\s*\]\]", re.IGNORECASE)
 PARAGRAPH_SPLIT_PATTERN = re.compile(r"\n\s*\n")
 
 SYSTEM_PROMPT = (
-    "你是一个繁体中文转简体中文的工具，同时负责清理与新闻正文无关的内容。"
-    "任务一：将繁体字形转换为简体。"
+    "你是一个新闻正文的翻译与清洗工具。"
+    "任务一：若原文为英文，逐段翻译成简体中文；若为繁体中文，转换为简体中文；已是简体则保持原样。"
     "任务二：删除与正文无关的段落，例如作者署名、订阅/关注/扫码/下载等推广引导、"
     "免责声明、与正文无关的编辑标注；不确定是否无关时一律保留。"
-    "要求：正文措辞、事实、数字、标点、换行、英文与专有名词不得改写或增删。"
+    "要求：事实、数字、标点、换行不得改写或增删；公司名、产品名、人名等专有名词保留原文"
+    "（必要时可在首次出现处用括号附中文）。"
     "直接输出结果，不要任何解释、不要代码块。"
     "若文本中出现 [[IMGn]] 形式的标记，必须原样保留，不能改动、删除或移动。"
 )
@@ -108,7 +109,7 @@ def _chunk_text(text: str, limit: int) -> list[str]:
 
 
 def translate_text(text: str, log: Callable[[str], None] | None = None) -> str:
-    """把一段繁体文本转为简体（长文自动分段）。"""
+    """把一段文本转成简体中文（英文翻译 / 繁体转换，长文自动分段）。"""
     logger = log or (lambda _msg: None)
     limit = int(os.getenv("TRANSLATE_CHUNK_CHARS") or DEFAULT_CHUNK_CHARS)
     chunks = _chunk_text(text, limit)
@@ -118,7 +119,7 @@ def translate_text(text: str, log: Callable[[str], None] | None = None) -> str:
 
 
 def translate_title(title: str, log: Callable[[str], None] | None = None) -> str:
-    """标题繁转简；失败则回退原文，不拖垮整篇。"""
+    """标题翻译为简体；失败则回退原文，不拖垮整篇。"""
     logger = log or (lambda _msg: None)
     title = (title or "").strip()
     if not title:
