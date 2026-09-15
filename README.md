@@ -47,7 +47,7 @@ python publish.py "春天露营装备推荐"
 
 ## 微信公众号（新闻采集）
 
-抓取新闻（Yahoo 香港財經 / Anthropic 新闻 / The Independent / TechCrunch）→ MiniMax 翻译为简体中文 → 用 [Wechatsync](https://github.com/wechatsync/Wechatsync) 推送到公众号**草稿箱**（人工复核后再发布）。整条链路独立于小红书，互不影响。
+抓取新闻（Yahoo 香港財經 / Anthropic 新闻 / The Independent / TechCrunch / Ars Technica / The Rundown AI / AIBase 资讯）→ MiniMax 翻译为简体中文（中文源自动跳过）→ 用 [Wechatsync](https://github.com/wechatsync/Wechatsync) 推送到公众号**草稿箱**（人工复核后再发布）。整条链路独立于小红书，互不影响。
 
 前置：
 
@@ -55,7 +55,7 @@ python publish.py "春天露营装备推荐"
 2. 浏览器里登录公众号后台，确认扩展能识别到公众号账号。
 3. `npm install -g @wechatsync/cli`，把 Token 填入 `.env` 的 `WECHATSYNC_TOKEN`。
 4. 配置 `MINIMAX_API_KEY`（翻译用，默认国内站 `api.minimaxi.com`）。
-5. 仅 **The Independent** 站点需要额外 `pip install playwright` 并本机已装 Edge/Chrome（正文为前端渲染 + 注册墙，必须真实浏览器渲染）；Yahoo / Anthropic / TechCrunch 站点无需该依赖。
+5. 仅 **The Independent** 站点需要额外 `pip install playwright` 并本机已装 Edge/Chrome（正文为前端渲染 + 注册墙，必须真实浏览器渲染）；Yahoo / Anthropic / TechCrunch / Ars Technica / The Rundown AI / AIBase 站点无需该依赖。
 
 用法：
 

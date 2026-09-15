@@ -66,6 +66,12 @@ def is_ai_related(title: str, keywords: list[str]) -> bool:
     return any(keyword.lower() in lowered for keyword in keywords)
 
 
+def _should_translate(site) -> bool:
+    """是否走翻译链路：全局开关 + 站点自身标记（中文源可 needs_translation=False）。"""
+    global_enabled = _truthy(os.getenv("TRANSLATE_ENABLED", "true"), default=True)
+    return global_enabled and getattr(site, "needs_translation", True)
+
+
 def pick_items(items: list[NewsItem], log: Callable[[str], None]) -> list[NewsItem]:
     """按配置随机选取本期新闻。"""
     low = int(os.getenv("NEWS_PICK_MIN") or DEFAULT_PICK_MIN)
@@ -338,11 +344,13 @@ def run(
                     break
             add_auto_images(article, out_dir, logger)
 
-            if _truthy(os.getenv("TRANSLATE_ENABLED", "true"), default=True):
+            if _should_translate(site):
                 notify("翻译")
                 logger("正在翻译为简体 ...")
                 article.blocks = translator.translate_blocks(article.blocks, log=logger)
                 article.title = translator.translate_title(article.title, log=logger)
+            elif not getattr(site, "needs_translation", True):
+                logger(f"{site.name}：中文源，跳过翻译")
 
             md_path = out_dir / "article.md"
             _write_markdown(md_path, article)
@@ -391,6 +399,20 @@ def _selftest() -> None:
     assert not is_ai_related("招銀國際料美國加息", ["deepseek", "AI"])
     assert _safe_slug("股價大漲") == "news"
     assert "yahoo_hk_finance" in available_sites()
+
+    assert _should_translate(types.SimpleNamespace(needs_translation=True))
+    assert not _should_translate(types.SimpleNamespace(needs_translation=False))
+    assert _should_translate(types.SimpleNamespace())  # 无该属性的站点 → 默认需要翻译
+    saved_translate = os.environ.get("TRANSLATE_ENABLED")
+    try:
+        os.environ["TRANSLATE_ENABLED"] = "false"
+        assert not _should_translate(types.SimpleNamespace(needs_translation=True))
+    finally:
+        os.environ.pop("TRANSLATE_ENABLED", None)
+        if saved_translate is not None:
+            os.environ["TRANSLATE_ENABLED"] = saved_translate
+    assert not get_site("aibase").needs_translation
+    assert get_site("yahoo_hk_finance").needs_translation
 
     article = types.SimpleNamespace(
         source="AASTOCKS",
